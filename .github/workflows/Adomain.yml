@@ -12,6 +12,8 @@ jobs:
   pool:
     vmImage: 'ubuntu-latest'
   steps:
+  - checkout: self
+    persistCredentials: true
   - task: AzureCLI@2
     displayName: 'Azure Login'
     inputs:
