@@ -1,6 +1,9 @@
-on: [push]
-  name: Azure ARM
-  jobs:
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+ 
+name: Azure ARM
+jobs:
     build-and-deploy:
       runs-on: ubuntu-latest
       steps:
