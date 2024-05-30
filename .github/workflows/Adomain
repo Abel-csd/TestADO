@@ -1,0 +1,31 @@
+trigger: none
+pr: none
+variables:
+  AZURE_SUBSCRIPTION_ID: <your-subscription-id>
+  AZURE_RG: <your-resource-group>
+  AZURE_TENANT_ID: <your-tenant-id>
+  AZURE_CLIENT_ID: <your-client-id>
+name: Azure ARM
+jobs:
+- job: build_and_deploy
+  displayName: 'Build and Deploy'
+  pool:
+    vmImage: 'ubuntu-latest'
+  steps:
+  - checkout: self
+  - task: AzureCLI@2
+    displayName: 'Azure Login'
+    inputs:
+      azureSubscription: 'ADOTestSubcription'
+      scriptType: 'bash'
+      addSpnToEnvironment: true
+  - task: AzurePowerShell@5
+    displayName: 'Create Main Resource Group'
+    inputs:
+      azureSubscription: 'ADOTestSubcription'
+      ScriptType: 'InlineScript'
+      Inline: |
+        New-AzResourceGroup -Name 'TestAdoGroup' -Location 'eastus' -Force
+    env:
+      AZURE_CLIENT_ID: 'd4800f35-9cb9-42f0-b21c-a4f9f81110df'
+      AZURE_TENANT_ID: 'b456ad3c-9a28-4fb9-af04-826556948104'
