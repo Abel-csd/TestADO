@@ -6,7 +6,7 @@ resources:
   repositories:
   - repository: self
     type: github
-    endpoint: ACTS_Solutions
+    endpoint: ADOGitHubTest
     name: Abel-csd/TestADO
     
 name: Azure ARM
