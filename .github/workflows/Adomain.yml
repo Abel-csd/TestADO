@@ -12,7 +12,6 @@ jobs:
   pool:
     vmImage: 'ubuntu-latest'
   steps:
-  - checkout: self
   - task: AzureCLI@2
     displayName: 'Azure Login'
     inputs:
