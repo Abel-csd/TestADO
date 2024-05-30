@@ -1,10 +1,14 @@
 trigger: none
+
 pr: none
-variables:
-  AZURE_SUBSCRIPTION_ID: <your-subscription-id>
-  AZURE_RG: <your-resource-group>
-  AZURE_TENANT_ID: <your-tenant-id>
-  AZURE_CLIENT_ID: <your-client-id>
+
+resources:
+  repositories:
+  - repository: self
+    type: github
+    endpoint: ADOgithubtest
+    name: Abel-csd/TestADO
+    
 name: Azure ARM
 jobs:
 - job: build_and_deploy
